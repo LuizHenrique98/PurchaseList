@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BackHandler, Alert } from "react-native";
+import { BackHandler, Alert, Platform } from "react-native";
 
 import Entypo from "@expo/vector-icons/Entypo";
 
@@ -118,7 +118,9 @@ export default function Home() {
       handleTotalizers(newData);
       setModalVisible(false);
     } else if (action === "check" && id !== "") {
-      starSound();
+      if (Platform.OS === "android") {
+        starSound();
+      }
       const newData = await handleCheckItem(id);
       setDataPurchaseItem(newData);
       handleTotalizers(newData);
