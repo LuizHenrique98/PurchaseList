@@ -1,6 +1,7 @@
 import React from "react";
 
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import Feather from "@expo/vector-icons/Feather";
 
 import colors from "../../global/colors";
 import * as S from "./styles";
@@ -36,8 +37,8 @@ export default function RenderItemPurchase({
       </S.ButtonCheckedItem>
 
       <S.ButtonRemoveItem onPress={onPressRemoveItem}>
-        <MaterialCommunityIcons
-          name="alpha-x-circle"
+        <Feather
+          name="x-circle"
           size={30}
           color={colors.red}
         />

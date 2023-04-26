@@ -25,9 +25,7 @@ export default function Home() {
   const [modalVisible, setModalVisible] = useState(false);
   const [purchaseItem, setPurchaseItem] = useState("");
   const [totalPurchaseItem, setTotalPurchaseItem] = useState(0);
-  const [dataPuchaseItem, setDataPurchaseItem] = useState<
-    RenderItemPurchaseProps[]
-  >([]);
+  const [dataPuchaseItem, setDataPurchaseItem] = useState<RenderItemPurchaseProps[]>([]);
   const [totalPurchaseItemChecked, setTotalPurchaseItemChecked] = useState(0);
   const [idRemovePurchaseItem, setIdRemovePurchaseItem] = useState("");
   const [itemFiltered, setItemFiltered] = useState("");

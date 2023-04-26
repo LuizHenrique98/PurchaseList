@@ -17,8 +17,7 @@ export const BoxHeader = styled.View`
 export const Title = styled.Text`
   color: ${colors.white};
   font-size: ${size.title};
-  font-family: ${fonts.roboto};
-  font-weight: bold;
+  font-family: ${fonts.roboto};  
 `;
 
 export const BoxInputItem = styled.View`
@@ -59,8 +58,7 @@ export const BoxEmptyList = styled.View`
   padding-top: 10px;
 `;
 
-export const TextListEmpty = styled.Text`
-  font-weight: 500;
+export const TextListEmpty = styled.Text`  
   color: ${colors.gray};
   font-family: ${fonts.roboto};
   font-size: ${size.subtitle};
