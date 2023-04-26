@@ -32,7 +32,7 @@ export const ButtonCheckedItem = styled.TouchableOpacity`
 
 export const NameItemPurchase = styled.Text<NameItemPurchaseProps>`
   font-size: ${size.title};
-  font-family: ${fonts.roboto};  
+  font-family: ${fonts.roboto};
   margin-left: 10px;
   color: ${(props) => (props.checked ? colors.green : colors.gray)};
   text-decoration: ${(props) => (props.checked ? "line-through" : "")};

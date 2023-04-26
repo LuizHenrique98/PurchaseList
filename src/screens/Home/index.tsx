@@ -4,6 +4,7 @@ import { BackHandler, Alert } from "react-native";
 import Entypo from "@expo/vector-icons/Entypo";
 
 import { showMessage } from "react-native-flash-message";
+import Sound from "react-native-sound";
 
 import * as S from "./styles";
 import colors from "../../global/colors";
@@ -68,6 +69,18 @@ export default function Home() {
     return () => backHandler.remove();
   }, []);
 
+  function starSound() {
+    Sound.setCategory("Playback");
+
+    const mySound = new Sound("sound.mp3", Sound.MAIN_BUNDLE, (error) => {
+      if (error) {
+        console.log(error);
+      } else {
+        mySound.play();
+      }
+    });
+  }
+
   async function handleTotalizers(dataPuchaseItem: any) {
     const totalItemCheked = dataPuchaseItem.filter(
       (item: any) => item.checked === true
@@ -105,6 +118,7 @@ export default function Home() {
       handleTotalizers(newData);
       setModalVisible(false);
     } else if (action === "check" && id !== "") {
+      starSound();
       const newData = await handleCheckItem(id);
       setDataPurchaseItem(newData);
       handleTotalizers(newData);

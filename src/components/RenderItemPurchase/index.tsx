@@ -23,11 +23,14 @@ export default function RenderItemPurchase({
   data,
   onPressCheckItem,
   onPressRemoveItem,
-  onLongPressCheckItem
+  onLongPressCheckItem,
 }: Props) {
   return (
     <S.BoxContainer checked={data.checked}>
-      <S.ButtonCheckedItem onPress={onPressCheckItem} onLongPress={onLongPressCheckItem}>
+      <S.ButtonCheckedItem
+        onPress={onPressCheckItem}
+        onLongPress={onLongPressCheckItem}
+      >
         <MaterialCommunityIcons
           name={data.checked ? "checkbox-marked" : "checkbox-blank-outline"}
           size={30}
@@ -39,11 +42,7 @@ export default function RenderItemPurchase({
       </S.ButtonCheckedItem>
 
       <S.ButtonRemoveItem onPress={onPressRemoveItem}>
-        <Feather
-          name="x-circle"
-          size={30}
-          color={colors.red}
-        />
+        <Feather name="x-circle" size={30} color={colors.red} />
       </S.ButtonRemoveItem>
     </S.BoxContainer>
   );
