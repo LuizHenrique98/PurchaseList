@@ -1,33 +1,38 @@
 import React from "react";
 
+import colors from "../../global/colors";
 import * as S from "./styles";
 
-interface WindowModalConfirmProps {
+interface WindowModalInputProps {
   visible: boolean;
   title: string;
-  description: string;
   titleButtonConfirm: string;
   titleButtonCancel: string;
   onPressConfirm: () => void;
   onPressCancel: () => void;
+  onChangeTextInput: (item) => void;
 }
 
-export default function WindowModalConfirm({
+export default function WindowModalInput({
   visible,
   title,
-  description,
   titleButtonConfirm,
   titleButtonCancel,
   onPressConfirm,
   onPressCancel,
-}: WindowModalConfirmProps) {
+  onChangeTextInput,
+}: WindowModalInputProps) {
   return (
     <S.Container>
       <S.BoxModal visible={visible} animationType="slide" transparent>
         <S.BoxContainerModal>
           <S.BoxContentModal style={{ elevation: 10 }}>
             <S.Title>{title}</S.Title>
-            <S.Description>{description}</S.Description>
+            <S.Input
+              placeholder="Informe a nova descrição"
+              onChangeText={onChangeTextInput}
+              placeholderTextColor={colors.gray}
+            />
 
             <S.BoxButtons>
               <S.ButtonConfirm onPress={onPressConfirm}>

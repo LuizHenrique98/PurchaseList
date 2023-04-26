@@ -16,16 +16,18 @@ interface Props {
   data: RenderItemPurchaseProps;
   onPressCheckItem: () => void;
   onPressRemoveItem: () => void;
+  onLongPressCheckItem: () => void;
 }
 
 export default function RenderItemPurchase({
   data,
   onPressCheckItem,
   onPressRemoveItem,
+  onLongPressCheckItem
 }: Props) {
   return (
     <S.BoxContainer checked={data.checked}>
-      <S.ButtonCheckedItem onPress={onPressCheckItem}>
+      <S.ButtonCheckedItem onPress={onPressCheckItem} onLongPress={onLongPressCheckItem}>
         <MaterialCommunityIcons
           name={data.checked ? "checkbox-marked" : "checkbox-blank-outline"}
           size={30}

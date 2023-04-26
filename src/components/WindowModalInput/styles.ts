@@ -28,15 +28,18 @@ export const Title = styled.Text`
   color: ${colors.gray};
   font-family: ${fonts.roboto};
   font-weight: bold;
+  margin-bottom: 20px;
 `;
 
-export const Description = styled.Text`
-  font-size: ${size.description};
-  color: ${colors.gray};
+export const Input = styled.TextInput`
+  width: 85%;
+  border-radius: 3px;
+  padding-left: 10px;
+  background-color: ${colors.white};
   font-family: ${fonts.roboto};
-  font-weight: bold;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  font-size: ${size.subtitle};
+  margin-bottom: 20px;
+  max-width: 100%;
 `;
 
 export const BoxButtons = styled.View`

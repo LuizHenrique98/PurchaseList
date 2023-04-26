@@ -14,8 +14,10 @@ import {
   handleRemoveItem,
   handleCheckItem,
   handleFindItem,
+  handleUpdateDescription,
 } from "../../utils/storage";
 
+import WindowModalInput from "../../components/WindowModalInput";
 import WindowModalConfirm from "../../components/WindowModalConfirm";
 import RenderItemPurchase, {
   RenderItemPurchaseProps,
@@ -25,10 +27,16 @@ export default function Home() {
   const [modalVisible, setModalVisible] = useState(false);
   const [purchaseItem, setPurchaseItem] = useState("");
   const [totalPurchaseItem, setTotalPurchaseItem] = useState(0);
-  const [dataPuchaseItem, setDataPurchaseItem] = useState<RenderItemPurchaseProps[]>([]);
+  const [dataPuchaseItem, setDataPurchaseItem] = useState<
+    RenderItemPurchaseProps[]
+  >([]);
   const [totalPurchaseItemChecked, setTotalPurchaseItemChecked] = useState(0);
   const [idRemovePurchaseItem, setIdRemovePurchaseItem] = useState("");
   const [itemFiltered, setItemFiltered] = useState("");
+  const [idUpdatePurchaseItem, setIdUpdatePurchaseItem] = useState("");
+  const [modalInputVisible, setModalInputVisible] = useState(false);
+  const [newDescriptionPurchaseItem, setNewDescriptionPurchaseItem] =
+    useState("");
 
   useEffect(() => {
     async function handleFetchData() {
@@ -76,6 +84,11 @@ export default function Home() {
     setModalVisible(true);
   }
 
+  async function handleSetIdUpdate(id: string) {
+    setIdUpdatePurchaseItem(id);
+    setModalInputVisible(true);
+  }
+
   async function handleStorage(
     action: string,
     id?: string,
@@ -95,6 +108,12 @@ export default function Home() {
       const newData = await handleCheckItem(id);
       setDataPurchaseItem(newData);
       handleTotalizers(newData);
+    } else if (action === "update" && id !== "" && description !== "") {
+      const newData = await handleUpdateDescription(id, description);
+      setDataPurchaseItem(newData);
+      setIdUpdatePurchaseItem("");
+      setNewDescriptionPurchaseItem("");
+      setModalInputVisible(false);
     } else {
       showMessage({
         message: "Ops...",
@@ -134,6 +153,7 @@ export default function Home() {
             data={item}
             onPressCheckItem={() => handleStorage("check", item.id, "")}
             onPressRemoveItem={() => handleSetIdRemove(item.id)}
+            onLongPressCheckItem={() => handleSetIdUpdate(item.id)}
           />
         )}
       />
@@ -160,6 +180,21 @@ export default function Home() {
         visible={modalVisible}
         onPressConfirm={() => handleStorage("delete", idRemovePurchaseItem, "")}
         onPressCancel={() => setModalVisible(false)}
+      />
+      <WindowModalInput
+        visible={modalInputVisible}
+        title="Confirme"
+        titleButtonConfirm="Ok"
+        titleButtonCancel="Cancelar"
+        onPressConfirm={() =>
+          handleStorage(
+            "update",
+            idUpdatePurchaseItem,
+            newDescriptionPurchaseItem
+          )
+        }
+        onPressCancel={() => setModalInputVisible(false)}
+        onChangeTextInput={(text) => setNewDescriptionPurchaseItem(text)}
       />
     </S.BoxContainer>
   );

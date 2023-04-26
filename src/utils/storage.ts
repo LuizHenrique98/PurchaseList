@@ -11,7 +11,7 @@ export async function getPurchaseItem() {
   } catch (error) {
     showMessage({
       message: "Ops...",
-      description: "Descrição do item obrigatória",
+      description: "Algo deu errado",
       type: "danger",
     });
     console.log(error);
@@ -107,16 +107,43 @@ export async function handleRemoveItem(id: string) {
   }
 }
 
-export async function handleFindItem(id: string){
-  try{
+export async function handleFindItem(id: string) {
+  try {
     const response = await getItem();
 
     const oldData = response ? JSON.parse(response) : [];
 
-    const newData = oldData.find((item: any) => item.id === id);    
+    const newData = oldData.find((item: any) => item.id === id);
 
     return newData || [];
-  } catch(error){
+  } catch (error) {
+    showMessage({
+      message: "Ops...",
+      description: "Algo deu errado",
+      type: "danger",
+    });
+    console.log(error);
+  }
+}
+
+export async function handleUpdateDescription(
+  id: string,
+  newDescription: string
+) {
+  try {
+    const response = await getItem();
+
+    const responseData = response ? JSON.parse(response) : [];
+
+    responseData.forEach((item: any) => {
+      if (item.id === id) {
+        item.description = newDescription;
+      }
+    });
+    await setItem(JSON.stringify(responseData));
+
+    return responseData || [];
+  } catch (error) {
     showMessage({
       message: "Ops...",
       description: "Algo deu errado",
