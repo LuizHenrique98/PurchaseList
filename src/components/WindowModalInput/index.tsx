@@ -31,7 +31,7 @@ export default function WindowModalInput({
             <S.Input
               placeholder="Informe a nova descrição"
               onChangeText={onChangeTextInput}
-              placeholderTextColor={colors.gray}
+              placeholderTextColor={colors.gray}              
             />
 
             <S.BoxButtons>

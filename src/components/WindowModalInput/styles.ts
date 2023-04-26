@@ -31,8 +31,7 @@ export const Title = styled.Text`
   margin-bottom: 20px;
 `;
 
-export const Input = styled.TextInput`
-  width: 85%;
+export const Input = styled.TextInput`  
   border-radius: 3px;
   padding-left: 10px;
   background-color: ${colors.white};
@@ -40,6 +39,9 @@ export const Input = styled.TextInput`
   font-size: ${size.subtitle};
   margin-bottom: 20px;
   max-width: 100%;
+  border: 1px;
+  border-color: ${colors.gray};
+  border-radius: 5px;
 `;
 
 export const BoxButtons = styled.View`

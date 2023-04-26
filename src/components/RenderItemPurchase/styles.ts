@@ -36,6 +36,7 @@ export const NameItemPurchase = styled.Text<NameItemPurchaseProps>`
   margin-left: 10px;
   color: ${(props) => (props.checked ? colors.green : colors.gray)};
   text-decoration: ${(props) => (props.checked ? "line-through" : "")};
+  max-width: 85%;
 `;
 
 export const ButtonRemoveItem = styled.TouchableOpacity`

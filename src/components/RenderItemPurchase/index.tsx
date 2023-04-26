@@ -36,7 +36,7 @@ export default function RenderItemPurchase({
           size={30}
           color={data.checked ? colors.green : colors.gray}
         />
-        <S.NameItemPurchase checked={data.checked}>
+        <S.NameItemPurchase checked={data.checked} numberOfLines={1} >
           {data.description}
         </S.NameItemPurchase>
       </S.ButtonCheckedItem>
